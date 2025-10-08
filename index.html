@@ -7,19 +7,79 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
 
 <!-- 랜딩 페이지 -->
 <div id="splash">
-  <img src="assets/main-image.svg" alt="첫 페이지 이미지">
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 1s, transform 1s, background-color 1s;
+}
+
+#splash img {
+  width: 300px;
+  cursor: pointer;
+  transform: scale(1) rotate(0deg);
+  transition: transform 1s;
+}
+
+#splash img:hover {
+  transform: scale(1.05) rotate(2deg);
+}  <img src="assets/main-image.svg" alt="첫 페이지 이미지">
 </div>
 
 <!-- 메인 페이지 -->
-<div id="main">
-  <h1 class="fade-text">Welcome to PCR!</h1>
-  <p class="fade-text delay1">포트폴리오, 프로젝트, 음악 등을 소개할 수 있습니다.</p>
-  <a href="links.html" class="fade-text delay2 main-link">바로 이동</a>
+<div id="main">{
+  display: none;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+  background: #fff;
+  transition: opacity 1s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  <h1 class="fade-text"></h1>
+  <p class="fade-text delay1"></p>
+  <a href="links.html" class="fade-text delay2 main-link"></a>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js"></script>const splash = document.getElementById('splash');
+const main = document.getElementById('main');
+
+splash.addEventListener('click', () => {
+  // 배경 색 변화 + 이미지 회전 + 확대
+  splash.style.backgroundColor = "#111"; 
+  const img = splash.querySelector('img');
+  img.style.transform = 'scale(1.5) rotate(20deg)';
+  splash.style.opacity = 0;
+
+  // 1초 후 메인 페이지 표시
+  setTimeout(() => {
+    splash.style.display = 'none';
+    main.style.display = 'flex';
+
+    // 메인 페이지 페이드 인
+    setTimeout(() => main.style.opacity = 1, 50);
+  }, 1000);
+});
+
 </body>
 </html>
