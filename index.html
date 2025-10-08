@@ -1,15 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Landing Page</title>
-<style>
-body { margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background:#000; }
-img { cursor:pointer; max-width:80%; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCR Landing Page</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a href="links.html"><img src="assets/main-image.svg" alt="Main Image"></a>
+
+<!-- 랜딩 페이지 -->
+<div id="splash">
+  <img src="assets/main-image.svg" alt="첫 페이지 이미지">
+</div>
+
+<!-- 메인 페이지 -->
+<div id="main">
+  <h1 class="fade-text">Welcome to PCR!</h1>
+  <p class="fade-text delay1">포트폴리오, 프로젝트, 음악 등을 소개할 수 있습니다.</p>
+  <a href="links.html" class="fade-text delay2 main-link">바로 이동</a>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
