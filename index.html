@@ -11,16 +11,16 @@
     align-items: center;
     height: 100vh;
     background: #fff;
-    overflow: hidden; /* 이미지가 화면 밖으로 나가도 스크롤 안 생기도록 */
+    overflow: hidden;
   }
 
-  /* 메인 이미지 이동 애니메이션 */
-  @keyframes slideRight {
+  /* 메인 이미지 계속 이동 애니메이션 */
+  @keyframes slideRightLoop {
     0% {
       transform: translateX(-100%);
     }
     100% {
-      transform: translateX(0);
+      transform: translateX(100%);
     }
   }
 
@@ -28,7 +28,7 @@
     cursor: pointer;
     max-width: 90vw;
     max-height: 90vh;
-    animation: slideRight 2s ease-out forwards; /* 2초 동안 왼쪽→오른쪽 이동 */
+    animation: slideRightLoop 10s linear infinite; /* 10초 동안 왼쪽→오른쪽 반복 이동 */
   }
 
   /* 음악 아이콘 스타일 */
@@ -56,6 +56,7 @@
     transform: scale(1.1);
   }
 </style>
+
 </head>
 <body>
   <a href="links.html">
