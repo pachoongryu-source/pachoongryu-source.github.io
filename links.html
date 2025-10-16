@@ -1,92 +1,1 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>PCR Links SPA</title>
-<style>
-body { 
-    margin: 0;
-    font-family: 'Helvetica', sans-serif; 
-    font-weight: bold; 
-    background: #fff; 
-    color: #000; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh;
-    flex-direction: column;
-}
-section {
-    display: none; /* 모든 섹션 숨김 */
-    text-align: center;
-}
-section.active {
-    display: block; /* 활성 섹션만 보임 */
-}
-ul { 
-    list-style: none; 
-    padding: 0; 
-}
-li { 
-    margin: 20px 0; 
-}
-a { 
-    color: #000; 
-    text-decoration: none; 
-    font-size: 30px; 
-}
-a:hover { 
-    color: #0036f8; /* 원래 호버 색상 유지 */
-}
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-@media (max-width: 768px) {
-    a { font-size: 18px; }
-    li { margin: 15px 0; }
-}
-</style>
-</head>
-<body>
-
-<!-- 1. 오디오 한 번만 배치 -->
-<audio id="bg-music" src="your-music-file.mp3" autoplay loop></audio>
-
-<!-- 2. 메인 페이지 -->
-<section id="main" class="active">
-    <h1>PCR</h1>
-    <button onclick="showLinks()">Go to Links</button>
-</section>
-
-<!-- 3. 링크트리 페이지 -->
-<section id="links">
-    <ul>
-        <li><a href="https://instagram.com/pcr" target="_blank" rel="noopener noreferrer">INSTAGRAM</a></li>
-        <li><a href="mailto:pa.choong.ryu@gmail.com">CONTACT</a></li>
-        <li><a href="https://www.youtube.com/@PCR_0" target="_blank" rel="noopener noreferrer">YOUTUBE</a></li>
-        <li><a href="https://open.spotify.com/artist/7lbrqKO8ODDwUsaMgTofUE?si=5NMDRoR4TNmw-TTxiWDfog&nd=1&dlsi=86f4b19060134f6c" target="_blank" rel="noopener noreferrer">SPOTIFY</a></li>
-        <li><a href="https://music.apple.com/artist/pcr/1786912879" target="_blank" rel="noopener noreferrer">APPLE MUSIC</a></li>
-        <li><a href="https://overtone.kr/full-review/pcr-people-come-raging과-아방가르드-보수주의" target="_blank" rel="noopener noreferrer">PEOPLE COME RAGING:OVERTONE</a></li>
-        <li><a href="https://visla.kr/article/music/314642/" target="_blank" rel="noopener noreferrer">PEOPLE COME RAGING:VISLA</a></li>
-    </ul>
-    <button onclick="showMain()">Back to Main</button>
-</section>
-
-<script>
-// 4. 섹션 전환
-function showLinks() {
-    document.getElementById('main').classList.remove('active');
-    document.getElementById('links').classList.add('active');
-}
-
-function showMain() {
-    document.getElementById('links').classList.remove('active');
-    document.getElementById('main').classList.add('active');
-}
-</script>
-
-</body>
-</html>
+<!DOCTYPE html>  <html lang="ko">  <head>  <meta charset="UTF-8">  <title>Links</title>  <style>  body {  display: flex;  justify-content: center;  align-items: center;  height: 100vh;  background: #fff; /* 배경 화이트 */  color: #000; /* 글자 블랙 */  font-family: 'Helvetica', sans-serif;  font-weight: bold; /* 볼드 적용 */  margin: 0;  }  ul {  list-style: none;  padding: 0;  }  li {  margin: 20px 0;  }  a {  color: #000; /* 링크도 블랙 */  text-decoration: none;  font-size: 30px;  }  a:hover {  color: #0036f8; /* 호버 색상 */  }  @media (max-width: 768px) {  a { font-size: 18px; }  li { margin: 15px 0; }  }  </style>  </head>  <body>  <ul>  <li><a href="https://instagram.com/pcr________________________/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a></li>  <li><a href="mailto:pa.choong.ryu@gmail.com">CONTACT</a></li>  <li><a href="https://www.youtube.com/@PCR_0" target="_blank" rel="noopener noreferrer">YOUTUBE</a></li>  <li><a href="https://open.spotify.com/artist/7lbrqKO8ODDwUsaMgTofUE?si=5NMDRoR4TNmw-TTxiWDfog&nd=1&dlsi=86f4b19060134f6c" target="_blank" rel="noopener noreferrer">SPOTIFY</a></li>  <li><a href="https://music.apple.com/artist/pcr/1786912879" target="_blank" rel="noopener noreferrer">APPLE MUSIC</a></li>  <li><a href="https://overtone.kr/full-review/pcr-people-come-raging과-아방가르드-보수주의" target="_blank" rel="noopener noreferrer">PEOPLE COME RAGING:OVERTONE</a></li> <li><a href="https://visla.kr/article/music/314642/" target="_blank" rel="noopener noreferrer">PEOPLE COME RAGING:VISLA</a></li>  </ul>  </body>  </html>
