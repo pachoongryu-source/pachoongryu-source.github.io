@@ -10,14 +10,88 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #fff; /* 배경을 화이트로 유지 */
+    background: #fff;
+    overflow: hidden; /* 이미지가 화면 밖으로 나가도 스크롤 안 생기도록 */
+  }
+
+  /* 메인 이미지 이동 애니메이션 */
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 
   img {
     cursor: pointer;
-    max-width: 90vw;  /* 거의 꽉 차게 */
+    max-width: 90vw;
     max-height: 90vh;
-    transition: transform 0.3s ease;
+    animation: slideRight 2s ease-out forwards; /* 2초 동안 왼쪽→오른쪽 이동 */
   }
-  img:hover {
-    transform: scale(1.0
+
+  /* 음악 아이콘 스타일 */
+  #music-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 1000;
+    user-select: none;
+  }
+
+  #music-icon:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+</style>
+</head>
+<body>
+  <a href="links.html">
+    <img src="assets/main-image.png" alt="main image">
+  </a>
+
+  <!-- 음악 아이콘 -->
+  <div id="music-icon">⏸</div>
+  <!-- 오디오 파일 -->
+  <audio id="bg-music" src="assets/music.mp3" autoplay loop></audio>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const musicIcon = document.getElementById('music-icon');
+
+  // 페이지 로드 시 자동 재생 시도
+  window.addEventListener('load', () => {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // 브라우저가 자동재생 차단 시, 아이콘을 ▶로 표시
+        musicIcon.textContent = "▶";
+      });
+    }
+  });
+
+  musicIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if(audio.paused){
+      audio.play();
+      musicIcon.textContent = "⏸";
+    } else {
+      audio.pause();
+      musicIcon.textContent = "▶";
+    }
+  });
+</script>
+</body>
+</html>
