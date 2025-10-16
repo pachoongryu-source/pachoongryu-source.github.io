@@ -9,7 +9,8 @@
     height: 100vh;
     background: #fff;
     overflow: hidden;
-    position: relative; /* 이미지 절대 위치를 위한 부모 */
+    position: relative;
+    font-family: 'Helvetica', sans-serif;
   }
 
   /* 메인 이미지 계속 이동 애니메이션 */
@@ -23,3 +24,101 @@
   }
 
   img {
+    position: absolute;
+    top: 35%; /* 세로 중앙보다 조금 위 */
+    transform: translateY(-50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: pointer;
+    animation: slideRightLoop 10s linear infinite;
+    z-index: 100;
+  }
+
+  /* 이미지 아래 문구 */
+  #main-text {
+    position: absolute;
+    top: 60%; /* 이미지 아래쪽 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Helvetica', sans-serif;
+    font-weight: normal;
+    font-size: 1rem; /* 문단 글씨 크기 */
+    color: #000;
+    text-align: center;
+    max-width: 80vw;
+    line-height: 1.5;
+    z-index: 500;
+    white-space: normal; /* 줄바꿈 가능 */
+  }
+
+  /* 음악 아이콘 스타일 */
+  #music-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 1000;
+    user-select: none;
+  }
+
+  #music-icon:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+</style>
+</head>
+<body>
+  <!-- 클릭하면 links.html로 이동 -->
+  <a href="links.html">
+    <img src="assets/main-image.png" alt="main image">
+  </a>
+
+  <!-- 이미지 아래 문구 -->
+  <div id="main-text">
+    Avant-garde does not exist. At least, it cannot survive alive on the ideological desert called popular music. In this context, it is hard to gauge the identity of PCR, who emerged wielding the No Wave genre—a genre that even in revolutionary times was almost annihilated. Appearing on this land, where the concept of capitalist realism fits more precisely than anywhere else in the world, they themselves claim that their music is not new. Even when combining an entire album with video, they borrow images far from commerciality; these images are often explosive, grotesque, sometimes sexy, and queer. The anarchistic tendencies of punk, fused with their sound and lyrics, reinforce the raw impression. Boldly citing influences on their album creation, it is reminiscent of the iconic “Odessa Steps” sequence from Sergei Eisenstein’s monumental film Battleship Potemkin.
+  </div>
+
+  <!-- 음악 아이콘 -->
+  <div id="music-icon">⏸</div>
+  <!-- 오디오 파일 -->
+  <audio id="bg-music" src="assets/music.mp3" autoplay loop></audio>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const musicIcon = document.getElementById('music-icon');
+
+  // 페이지 로드 시 자동 재생 시도
+  window.addEventListener('load', () => {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // 브라우저가 자동재생 차단 시, 아이콘을 ▶로 표시
+        musicIcon.textContent = "▶";
+      });
+    }
+  });
+
+  // 아이콘 클릭 시 재생/일시정지 토글
+  musicIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if(audio.paused){
+      audio.play();
+      musicIcon.textContent = "⏸";
+    } else {
+      audio.pause();
+      musicIcon.textContent = "▶";
+    }
+  });
+</script>
+</body>
+</html>
