@@ -3,31 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <title>PCR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   /* 전체 페이지 기본 설정 */
   html, body {
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* 화면보다 길어질 수 있도록 설정 */
+    min-height: 100vh;
     background: #fff;
     font-family: 'Helvetica', sans-serif;
-    overflow-y: auto; /* 스크롤 허용 */
+    overflow-y: auto;
   }
 
   /* 메인 이미지 애니메이션 */
   @keyframes slideRightLoop {
-    0% {
-      left: -100%; /* 화면 왼쪽 밖 */
-    }
-    100% {
-      left: 100%; /* 화면 오른쪽 밖 */
-    }
+    0% { left: -100%; }
+    100% { left: 100%; }
   }
 
   /* 메인 이미지 스타일 */
   img {
     position: absolute;
-    top: 35%; /* 세로 중앙보다 조금 위 */
+    top: 35%;
     left: 0;
     transform: translateY(-50%);
     max-width: 75vw;
@@ -39,15 +36,15 @@
 
   /* 이미지 아래 문구 */
   #main-text {
-    position: relative; /* body 흐름에 포함되도록 변경 */
-    margin: 90vh auto 120px; /* 이미지 아래 충분한 여백 */
+    position: relative;
+    margin: 90vh auto 120px;
     font-weight: bold;
     font-size: 16px;
     color: #000;
     text-align: center;
     max-width: 90vw;
     line-height: 21px;
-    white-space: normal; /* 줄바꿈 가능 */
+    white-space: normal;
     z-index: 500;
   }
 
@@ -75,6 +72,26 @@
     background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.1);
   }
+
+  /* 모바일 대응 */
+  @media (max-width: 768px) {
+    img {
+      max-width: 90vw;
+      max-height: 50vh;
+      top: 40%;
+    }
+
+    #main-text {
+      margin: 60vh auto 80px;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    @keyframes slideRightLoop {
+      0% { left: -120%; }
+      100% { left: 100%; }
+    }
+  }
 </style>
 </head>
 <body>
@@ -83,12 +100,9 @@
     <img src="assets/main-image.png" alt="main image">
   </a>
 
-  <!-- 이미지 아래 문구 (한글 캡션 포함) -->
+  <!-- 이미지 아래 문구 -->
   <div id="main-text">
-    Avant-garde does not exist. At least, it cannot survive alive on the ideological desert called popular music. In this context, it is hard to gauge the identity of PCR, who emerged wielding the No Wave genre—a genre that even in revolutionary times was almost annihilated. Appearing on this land, where the concept of capitalist realism fits more precisely than anywhere else in the world, they themselves claim that their music is not new. Even when combining an entire album with video, they borrow images far from commerciality; these images are often explosive, grotesque, sometimes sexy, and queer. The anarchistic tendencies of punk, fused with their sound and lyrics, reinforce the raw impression. Boldly citing influences on their album creation, it is reminiscent of the iconic “Odessa Steps” sequence from Sergei Eisenstein’s monumental film Battleship Potemkin.<br><br>
-    <span style="font-size: 14px; color: #666;">
-     
-    </span>
+    Avant-garde does not exist. At least, it cannot survive alive on the ideological desert called popular music. In this context, it is hard to gauge the identity of PCR, who emerged wielding the No Wave genre—a genre that even in revolutionary times was almost annihilated. Appearing on this land, where the concept of capitalist realism fits more precisely than anywhere else in the world, they themselves claim that their music is not new. Even when combining an entire album with video, they borrow images far from commerciality; these images are often explosive, grotesque, sometimes sexy, and queer. The anarchistic tendencies of punk, fused with their sound and lyrics, reinforce the raw impression. Boldly citing influences on their album creation, it is reminiscent of the iconic “Odessa Steps” sequence from Sergei Eisenstein’s monumental film Battleship Potemkin.
   </div>
 
   <!-- 음악 아이콘 -->
@@ -101,18 +115,15 @@
   const audio = document.getElementById('bg-music');
   const musicIcon = document.getElementById('music-icon');
 
-  // 페이지 로드 시 자동 재생 시도
   window.addEventListener('load', () => {
     const playPromise = audio.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // 브라우저가 자동재생 차단 시, 아이콘을 ▶로 표시
         musicIcon.textContent = "▶";
       });
     }
   });
 
-  // 아이콘 클릭 시 재생/일시정지 토글
   musicIcon.addEventListener('click', (e) => {
     e.stopPropagation();
     if (audio.paused) {
